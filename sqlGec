@@ -1,0 +1,28 @@
+-- select owner_id, count(*) from posts left join votes 
+-- on posts.owner_id = votes.post_id
+-- group by owner_id;
+
+-- select posts.id, count(*) from posts left join votes
+-- on posts.id = votes.post_id
+-- group by posts.id
+-- order by posts.id;
+
+-- select * from posts left join votes
+-- on posts.id = votes.post_id;
+
+-- select posts.id, count(votes.post_id) from posts left join votes
+-- on posts.id = votes.post_id
+-- group by posts.id
+-- order by posts.id;
+
+-- select posts.*, count(votes.post_id) as votes from posts left join votes
+-- on posts.id = votes.post_id
+-- group by posts.id
+-- order by posts.id;
+
+-- select posts.*, count(votes.post_id) as votes from posts 
+-- left join votes
+-- on posts.id = votes.post_id
+-- where posts.id = 11
+-- group by posts.id
+-- order by posts.id;

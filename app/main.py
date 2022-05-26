@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, status
 from . import models
 from .database import engine 
 from .routers import post, user, auth, item, vote
@@ -40,6 +40,8 @@ app.include_router(auth.router, prefix="/login", tags=['Login'])
 app.include_router(item.router, prefix="/items", tags=['Items'])
 app.include_router(vote.router, prefix="/votes", tags=['Votes'])
 
-@app.get("/")
+#@app.get("/",status_code=status.HTTP_201_CREATED)
+@app.get("/", status_code=status.HTTP_201_CREATED)
 def read_root():
-    return {"message": "Hello World !!!!"}
+    # return {"message": "Bindmount works acaba selami + Cengiz + Halil!!!!"}
+    return {"message": "selami"}

@@ -8,9 +8,9 @@ jobs:
     steps:
       - name: pulling git repo
         uses: actions/checkout@v2
-      # - name: Say hi to alp
-      #   run: echo "Hi alp"
-      - name: pulling git repo
+      - name: Say hi to alp
+        run: echo "Hi alp"
+      - name: installing python
         uses: actions/setup-python@v3
         with:
           python-version: "3.x"

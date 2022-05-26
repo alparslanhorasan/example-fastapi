@@ -73,5 +73,5 @@ jobs:
           cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/ahorasan:buildcache
           cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/ahorasan:buildcache,mode=max
 
-        - name: Image Digest
-          run: echo ${{ secrets.docker_build.outputs.digest }}
+        # - name: Image Digest
+        #   run: echo ${{ secrets.docker_build.outputs.digest }}

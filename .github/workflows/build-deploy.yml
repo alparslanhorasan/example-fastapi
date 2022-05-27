@@ -3,7 +3,8 @@ name: Build and deploy app
 on: [push, pull_request]
 
 jobs:
-  job1:
+  #job1: renamed to build:
+  build:
     environment:
       name: testing
     env:
@@ -55,26 +56,34 @@ jobs:
         run: |
           pip install pytest
           pytest
+      # *************************************
+      # Aşağıdaki alan CD için COMMENTED OUT
+      # *************************************
+      # - name: Login to Docker Hub
+      #   uses: docker/login-action@v1
+      #   with:
+      #     username: ${{ secrets.DOCKER_HUB_USERNAME }}
+      #     password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+      #     # 887042f5-46f7-4901-b367-0820592ef5d0
 
-      - name: Login to Docker Hub
-        uses: docker/login-action@v1
-        with:
-          username: ${{ secrets.DOCKER_HUB_USERNAME }}
-          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+      # - name: Set up Docker Buildx
+      #   uses: docker/setup-buildx-action@v1
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
+      # - name: Build and push
+      #   uses: docker/build-push-action@v2
+      #   with:
+      #     context: ./
+      #     file: ./Dockerfile
+      #     builder: ${{ steps.buildx.outputs.name }}
+      #     push: true
+      #     tags: ${{ secrets.DOCKER_HUB_USERNAME }}/ahorasan:latest
+      #     cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/ahorasan:buildcache
+      #     cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/ahorasan:buildcache,mode=max
 
-      - name: Build and push
-        uses: docker/build-push-action@v2
-        with:
-          context: ./
-          file: ./Dockerfile
-          builder: ${{ steps.buildx.outputs.name }}
-          push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/ahorasan:latest
-          cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/ahorasan:buildcache
-          cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/ahorasan:buildcache,mode=max
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [build]
 
-        # - name: Image Digest
-        #   run: echo ${{ secrets.docker_build.outputs.digest }}
+    step:
+      - name: deploying stuff
+        run: echo "gonna deploy sone stuff"

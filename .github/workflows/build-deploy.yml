@@ -84,6 +84,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: [build]
 
-    step:
+    steps:
       - name: deploying stuff
         run: echo "gonna deploy sone stuff"

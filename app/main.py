@@ -1,13 +1,13 @@
 from fastapi import FastAPI, status
 from . import models
-from .database import engine 
+from .database import engine
 from .routers import post, user, auth, item, vote
 from .config import settings
 
 from fastapi.middleware.cors import CORSMiddleware
 
 # Artık Alembic kullandığımız için aşağıdakilere gerek kalmadı Comment'liyoruz
-# # SQLAlchemy için 
+# # SQLAlchemy için
 # models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
@@ -19,7 +19,7 @@ app = FastAPI()
 # ]
 origins = ["*"]
 
-# CORS 
+# CORS
 # Middleware: A function that runs before other requests
 # allow_origins: What domains can talk to our API's
 # allow_methods: CORS not only allow domains, it also allows http methods
@@ -40,8 +40,10 @@ app.include_router(auth.router, prefix="/login", tags=['Login'])
 app.include_router(item.router, prefix="/items", tags=['Items'])
 app.include_router(vote.router, prefix="/votes", tags=['Votes'])
 
-#@app.get("/",status_code=status.HTTP_201_CREATED)
+# @app.get("/",status_code=status.HTTP_201_CREATED)
+
+
 @app.get("/", status_code=status.HTTP_201_CREATED)
 def read_root():
     # return {"message": "Bindmount works acaba selami + Cengiz + Halil!!!!"}
-    return {"message": "selami"}
+    return {"message": "selami Successfully deployed from CI"}

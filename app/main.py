@@ -46,4 +46,4 @@ app.include_router(vote.router, prefix="/votes", tags=['Votes'])
 @app.get("/", status_code=status.HTTP_201_CREATED)
 def read_root():
     # return {"message": "Bindmount works acaba selami + Cengiz + Halil!!!!"}
-    return {"message": "Serap Successfully deployed from CI"}
+    return {"message": "Serap Successfully deployed from CI vvvvvv"}

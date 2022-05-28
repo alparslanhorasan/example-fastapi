@@ -110,4 +110,5 @@ jobs:
           script: |
             cd app/src
             git pull
-            echo ${{ secrets.PROD_PASSWORD }} | sudo -S systemctl restart api
+            echo whoami
+        # ${{ secrets.PROD_PASSWORD }} | sudo -S systemctl restart api

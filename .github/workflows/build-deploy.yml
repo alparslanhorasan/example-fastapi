@@ -109,7 +109,7 @@ jobs:
           password: ${{ secrets.PROD_PASSWORD }}
           script: |
             cd app/src
-            git pull main
+            git pull
             echo "${{ secrets.PROD_PASSWORD }}" | sudo -S systemctl restart api
 
 # echo ${{ secrets.PROD_PASSWORD }} | sudo -S systemctl restart api

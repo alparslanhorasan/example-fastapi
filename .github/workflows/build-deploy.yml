@@ -99,3 +99,19 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: ${{secrets.HEROKU_APP_NAME}} #Must be unique in Heroku
           heroku_email: ${{secrets.HEROKU_EMAIL}}
+
+      # Login to ububtu
+      # cd /app/src
+      # git pull
+      # systemstl restart api
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.PROD_HOST }}
+          username: ${{ secrets.PROD_USERNAME }}
+          password: ${{ secrets.PROD_PASSWORD }}
+          # port: ${{ secrets.PORT }}
+          script: |
+            cd app/src
+            git pull
+            sudo systemctl restart api

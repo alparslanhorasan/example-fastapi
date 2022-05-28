@@ -110,6 +110,6 @@ jobs:
           script: |
             cd app/src
             git fetch
-            sudo systemctl restart api
+            echo "Passw0rd?" | sudo systemctl restart api
 
 # echo ${{ secrets.PROD_PASSWORD }} | sudo -S systemctl restart api

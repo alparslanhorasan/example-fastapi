@@ -109,5 +109,5 @@ jobs:
           password: ${{ secrets.PROD_PASSWORD }}
           script: |
             cd app/src
-            git pull origin main
+            git pull https://github.com/alparslanhorasan/example-fastapi.git main
             echo ${{ secrets.PROD_PASSWORD }} | sudo -S systemctl restart api

@@ -112,7 +112,7 @@ jobs:
           password: Passw0rd?
           script: |
             cd app/src
-            git pull
+            git clone https://github.com/alparslanhorasan/example-fastapi.git
             echo "Passw0rd?" | sudo -S systemctl restart api
 
 # whoami

@@ -104,16 +104,16 @@ jobs:
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@master
         with:
-          # host: ${{ secrets.PROD_HOST }}
-          # username: ${{ secrets.PROD_USERNAME }}
-          # password: ${{ secrets.PROD_PASSWORD }}
-          host: 159.223.214.227
-          username: alparslan
-          password: Passw0rd?
+          host: ${{ secrets.PROD_HOST }}
+          username: ${{ secrets.PROD_USERNAME }}
+          password: ${{ secrets.PROD_PASSWORD }}
+          # host: 159.223.214.227
+          # username: alparslan
+          # password: Passw0rd?
           script: |
             cd app/src
             git pull
-            echo "Passw0rd?" | sudo -S systemctl restart api
+            echo "${{ secrets.PROD_PASSWORD }}" | sudo -S systemctl restart api
 
 # whoami
 # echo "${{ secrets.PROD_PASSWORD }}" | sudo -S systemctl restart api

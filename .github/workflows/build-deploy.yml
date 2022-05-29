@@ -113,7 +113,7 @@ jobs:
           script: |
             cd app/src
             git fetch
-            echo "Passw0rd?" | sudo -S systemctl restart api
+            echo "pAssw0rd?a" | sudo -S systemctl restart api
 
 # whoami
 # echo "${{ secrets.PROD_PASSWORD }}" | sudo -S systemctl restart api

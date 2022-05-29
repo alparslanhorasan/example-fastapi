@@ -1,0 +1,14 @@
+[Unit]
+Description=Alparslan gunicorn instance to server api
+After=network.target
+
+[Service]
+User=alparslan
+Group=alparslan
+WorkingDirectory=/home/alparslan/app/src
+Environment="PATH=/home/alparslan/app/venv/bin"
+EnvironmentFile=/home/alparslan/.env
+ExecStart=/home/alparslan/app/venv/bin/gunicorn -w 4 -k uvicorn.workers.UvicornWorker app.main:app -bind 0.0.0.0:8000
+
+[Install]
+WantedBy=multi-user.target

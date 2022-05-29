@@ -109,8 +109,8 @@ jobs:
           password: ${{ secrets.PROD_PASSWORD }}
           script: |
             cd app/src
-            git fetch
-            echo whoami
+            git pull
+            echo echo ${{ secrets.PROD_PASSWORD }} | sudo -S systemctl restart api
 
 # whoami
 # echo ${{ secrets.PROD_PASSWORD }} | sudo -S systemctl restart api
